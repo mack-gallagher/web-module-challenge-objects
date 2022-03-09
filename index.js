@@ -15,8 +15,12 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+    const item = {};
+    item.name = name;
+    item.price = price;
+    item.category = category;
+    return item;
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -29,7 +33,13 @@ Test your createMenuItems function by doing the following:
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
 
+const item1 = createMenuItem('vanilla ice cream', 6, 'is my favorite flavor');
+const item2 = createMenuItem('my milkshake', 8, 'brings all the boys to the yard');
+const item3 = createMenuItem('my ice', 1000000, 'brought the goalies in');
 
+console.log(`First menu item: ${JSON.stringify(item1)}`);
+console.log(`Second menu item: ${JSON.stringify(item2)}`);
+console.log(`Third menu item: ${JSON.stringify(item3)}`);
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
@@ -47,9 +57,17 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  
-}
+  discount: function(title) {
+              if (title === 'teacher' || title === 'student') {
+                return this.price*.75;
+              } else if (title === 'public') {
+                return this.price*.9;
+              } else {
+                console.log("We're sorry, that title is not recognized. Please pass a title of 'teacher', 'student', or 'public'.");
+              } 
+             }
 
+}
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -69,7 +87,11 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
+const juliusFeedback = reviews.find(x => x.name === "Julius").feedback;
 
+console.log();
+console.log('Julius\'s feedback:');
+console.log(juliusFeedback);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -79,7 +101,9 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
 */
 
 
+reviews[reviews.findIndex(x => x.name === "Reyna")].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
 
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -91,9 +115,15 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(arr, name, rating, review){
+  const addition = {};
+  addition.name = name;
+  addition.rating = rating;
+  addition.feedback = review;
+  arr.push(addition);
+  return arr;
 }
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function to return a review based on the index of the review in the array.
@@ -106,8 +136,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(arr, i) {
+  return `${arr[i].name} gave the restaurant a ${arr[i].rating} star review, and their feedback was: ${arr[i].feedback}`;
 }
 
 
