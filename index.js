@@ -155,8 +155,9 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(arr) {
+  const last = arr.pop();
+  return `${last.name} gave the restaurant a ${last.rating} star review, and their feedback was: ${last.feedback}` 
 } 
 
 
@@ -177,9 +178,17 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(arr, rating) {
+    let specifiedReviews = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].rating >= rating && arr[i].rating < rating+1) {
+        specifiedReviews.push(arr[i]);
+      }
+    }
+    return specifiedReviews;
   }
+
+console.log('ratings in reviews in the 4 range: ',getReviewByRating(reviews, 4));
 
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
